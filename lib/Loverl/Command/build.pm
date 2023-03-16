@@ -13,7 +13,7 @@ sub description { "Builds the LÖVE2D project into a build directory." }
 
 sub validate_args ( $self, $opt, $args ) {
     $self->usage_error(
-        "Remove @$args
+        "Remove @$args\n
         run \"loverl build\""
     ) if @$args;
 }

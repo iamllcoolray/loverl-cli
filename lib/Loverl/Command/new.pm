@@ -11,9 +11,13 @@ sub abstract { "initializes a new LÖVE2D project" }
 
 sub description { "Initializes a new LÖVE2D project directory." }
 
+sub opt_spec {
+    return ( [ "git|g", "initializes git into the project" ], );
+}
+
 sub validate_args ( $self, $opt, $args ) {
     $self->usage_error(
-        "Needs to include a project name
+        "Needs to include a project name\n
         run \"loverl new [New Project Name]\""
     ) unless @$args;
 }
@@ -21,6 +25,7 @@ sub validate_args ( $self, $opt, $args ) {
 sub execute ( $self, $opt, $args ) {
 
     print(@$args);
+    print("test git") if $opt->{git};
 }
 
 1;
@@ -34,3 +39,5 @@ Loverl's new command will initialize the LÖVE2D project directory.
 =head1 SYNOPSIS
 
     loverl new [New Project Name]
+
+        --git (or -g) initializes git
