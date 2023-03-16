@@ -14,7 +14,7 @@ sub description { "Runs the LÖVE2D project through the Love application." }
 sub validate_args ( $self, $opt, $args ) {
     $self->usage_error(
         "Remove @$args\n
-        run \"loverl build\""
+        run \"loverl run\""
     ) if @$args;
 }
 
@@ -32,4 +32,4 @@ Loverl's run command will run the LÖVE2D project through the Love application.
 
 =head1 SYNOPSIS
 
-    loverl build
+    loverl run
