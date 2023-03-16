@@ -17,7 +17,7 @@ sub opt_spec {
 
 sub validate_args ( $self, $opt, $args ) {
     $self->usage_error(
-        "Needs to include a project name\n
+        "Requires a project name\n
         run \"loverl new [New Project Name]\""
     ) unless @$args;
 }
