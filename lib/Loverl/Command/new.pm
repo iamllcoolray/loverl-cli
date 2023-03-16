@@ -25,7 +25,8 @@ sub validate_args ( $self, $opt, $args ) {
 sub execute ( $self, $opt, $args ) {
 
     print(@$args);
-    print("test git") if $opt->{git};
+    print("test git")     if $opt->{git};
+    print("test verbose") if $self->app->global_options->{verbose};
 }
 
 1;

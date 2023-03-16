@@ -7,6 +7,11 @@ our $VERSION = '0.001';
 use v5.36;
 
 use App::Cmd::Setup -app;
+
+sub global_opt_spec {
+    return ( [ "help|h", "show help" ], [ "verbose|v", "show full logging" ], );
+}
+
 1;
 
 =encoding utf8
