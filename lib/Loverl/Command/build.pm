@@ -13,8 +13,9 @@ sub description { "Builds the LÖVE2D project into a build directory." }
 
 sub validate_args ( $self, $opt, $args ) {
     $self->usage_error(
-        "Invalid Command: Remove @$args and run \"loverl build\"")
-      if @$args;
+        "Remove @$args
+        run \"loverl build\""
+    ) if @$args;
 }
 
 sub execute ( $self, $opt, $args ) {

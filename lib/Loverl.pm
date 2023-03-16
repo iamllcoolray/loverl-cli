@@ -13,12 +13,12 @@ use App::Cmd::Setup -app;
 =head1 SYNOPSIS
     loverl [options]
         Options:
-            init [name]
+            new [New Prject Name]
             build
             help
             version
 =head2 Options
-init - Initializes the LÖVE2D project directory.
+new - Initializes a new LÖVE2D project directory.
 build - Builds the LÖVE2D project into a build directory.
 help - Displays a help message on how to use Loverl.
 version - Displays Loverl's version number.
