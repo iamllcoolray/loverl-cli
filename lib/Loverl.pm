@@ -9,7 +9,10 @@ use v5.36;
 use App::Cmd::Setup -app;
 
 sub global_opt_spec {
-    return ( [ "help|h", "show help" ], [ "verbose|v", "show full logging" ], );
+    return (
+        [ "help|h",    "show help" ],
+        [ "verbose|v", "show all logging processes" ],
+    );
 }
 
 1;
