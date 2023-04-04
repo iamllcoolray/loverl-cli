@@ -3,6 +3,7 @@ package Loverl::Command::new;
 # ABSTRACT: Initializes a new LÖVE2D project directory
 
 use Loverl -command;
+use Loverl::Create::Directory;
 use v5.36;
 
 sub command_names { qw(new --new -n) }
@@ -24,7 +25,9 @@ sub validate_args ( $self, $opt, $args ) {
 
 sub execute ( $self, $opt, $args ) {
 
-    print(@$args);
+    my $project_dir = Loverl::Create::Directory->new();
+    $project_dir->dir_name(@$args);
+    $project_dir->create_dir();
     print("test git")     if $opt->{git};
     print("test verbose") if $self->app->global_options->{verbose};
 }
