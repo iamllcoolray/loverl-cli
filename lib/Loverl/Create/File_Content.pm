@@ -4,7 +4,7 @@ use v5.36;
 
 sub file_content(){
     my %file_content = (
-        main_file => <<~EOF,
+        main => <<~EOF,
         function love.load()
 
         end
@@ -17,7 +17,7 @@ sub file_content(){
             
         end
         EOF
-        conf_file => <<~EOF,
+        conf => <<~EOF,
         function love.conf(t)
             t.title = "Untitled"
 
