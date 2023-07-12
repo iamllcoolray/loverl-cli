@@ -10,9 +10,12 @@ has "dir_name" => (is => "rw", isa => "Str", default => "new-project");
 my $dir = getcwd();
 
 sub project_dir($self){
-    my $dir = getcwd();
     my $project_dir = $dir . "/" . $self->dir_name;
     return $project_dir;
+}
+
+sub project_subdir(){
+    
 }
 
 sub create_dir ($self) {
