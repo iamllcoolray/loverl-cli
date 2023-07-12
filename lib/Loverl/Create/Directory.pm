@@ -16,7 +16,11 @@ sub project_dir($self){
 }
 
 sub create_dir ($self) {
-    mkdir(project_dir($self)) or die("Can't create directory.");
+    if(-d $self->dir_name){
+        print($self->dir_name . " already exists at \$PATH=$dir\n");
+    }else{
+        mkdir(project_dir($self)) or die("Can't create directory.");
+    }
 }
 1;
 
