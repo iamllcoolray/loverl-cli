@@ -17,7 +17,7 @@ sub file_content(){
             
         end
         EOF
-        config_file => <<~EOF,
+        conf_file => <<~EOF,
         function love.conf(t)
             t.title = "Untitled"
 
