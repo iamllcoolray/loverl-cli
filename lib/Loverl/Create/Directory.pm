@@ -14,15 +14,18 @@ sub project_dir($self){
     return $project_dir;
 }
 
-sub project_subdir(){
-    
+sub project_subdir($self, $dir_name){
+    my $project_subdir = project_dir($self) . "/" . $dir_name;
+    return $project_subdir;
 }
 
 sub create_dir ($self) {
     if(-d $self->dir_name){
-        print($self->dir_name . " already exists at \$PATH=$dir\n");
+        print($self->dir_name . " already exists at \$PATH=$dir/\n");
     }else{
         mkdir(project_dir($self)) or die("Can't create directory.");
+        mkdir(project_subdir($self, "assets")) or die("Can't create directory.");
+        mkdir(project_subdir($self, "libraries")) or die("Can't create directory.");
     }
 }
 1;
