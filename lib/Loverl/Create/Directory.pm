@@ -27,28 +27,50 @@ sub create_file($self){
     my $FILE;
 
     foreach my $key (keys %file_content){
-        open($FILE, ">>", project_dir($self) . "/$key.lua") or die("Cannot open file: " . $!);
+        open($FILE, ">>", project_dir($self) . "/$key") or die("Cannot open file: " . $!);
         my $value = $file_content{$key};
         print($FILE $value);
         close($FILE) or die("Cannot close file: ".$!);
     }
 }
 
-sub create_dir ($self) {
+sub create_dir_verbose ($self) {
     if(-e $self->dir_name){
-        print($self->dir_name . " already exists as a file at \$PATH=$dir/\n");
+        print($dir . "/" . $self->dir_name . "/" . " already exists as a file.\n");
     }else{
         if(-d $self->dir_name){
-            print($self->dir_name . " already exists at \$PATH=$dir/\n");
+            print($dir . "/" . $self->dir_name . "/" . " already exists.\n");
+        }else{
+            mkdir(project_dir($self)) or die("Can't create directory. " . $!);
+            print("+ " . $dir . "/" . $self->dir_name . "/" . "\n");
+            mkdir(project_subdir($self, "assets")) or die("Can't create directory. " . $!);
+            print("+ " . $dir . "/" . $self->dir_name . "/assets/" . "\n");
+            mkdir(project_subdir($self, "libraries")) or die("Can't create directory. " . $!);
+            print("+ " . $dir . "/" . $self->dir_name . "/libraries/" . "\n");
+            create_file($self);
+            foreach my $key (keys %file_content){
+                print("+ " . $dir . "/" . $self->dir_name . "/$key" . "\n");
+            }
+        }
+    }
+}
+
+sub create_dir ($self) {
+    if(-e $self->dir_name){
+        print($dir . "/" . $self->dir_name . "/" . " already exists as a file.\n");
+    }else{
+        if(-d $self->dir_name){
+            print($dir . "/" . $self->dir_name . "/" . " already exists.\n");
         }else{
             mkdir(project_dir($self)) or die("Can't create directory. " . $!);
             mkdir(project_subdir($self, "assets")) or die("Can't create directory. " . $!);
             mkdir(project_subdir($self, "libraries")) or die("Can't create directory. " . $!);
             create_file($self);
-            print($self->dir_name . " has been created at \$PATH=$dir/\n");
+            print("+ " . $dir . "/" . $self->dir_name . "/" . "\n");
         }
     }
 }
+
 1;
 
 =encoding utf8
