@@ -25,6 +25,12 @@ sub file_content(){
             t.window.height = 720
         end
         EOF
+        "README.md" => <<~EOF,
+        # New LÖVE2D Game Project
+        EOF
+        "LICENSE" => <<~EOF,
+        Enter the project's licensing policy here
+        EOF
     );
 
     return %file_content;
