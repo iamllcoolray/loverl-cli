@@ -47,13 +47,15 @@ Loverl is a LÖVE2D game development command-line interface.
 
 =head1 Setup
 
+Loverl uses Perl version 5.36 or later.
+
 =head2 Installation
 
-=head3 Through cpanm
+=head3 Using cpanm
 
     cpanm Loverl
 
-=head3 Through the Project Directory
+=head3 Using the Project Directory
 
     cpanm --installdeps .
     perl Makefile.PL
