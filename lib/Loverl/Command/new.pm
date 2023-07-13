@@ -27,9 +27,12 @@ sub validate_args ( $self, $opt, $args ) {
 
 sub execute ( $self, $opt, $args ) {
     $project_dir->dir_name(@$args);
-    $project_dir->create_dir();
+    if($self->app->global_options->{verbose}){
+        $project_dir->create_dir_verbose();
+    }else{
+        $project_dir->create_dir();
+    }
     print("test git\n")     if $opt->{git};
-    print("test verbose\n") if $self->app->global_options->{verbose};
 }
 
 1;
