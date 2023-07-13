@@ -26,7 +26,7 @@ sub file_content(){
         end
         EOF
         "README.md" => <<~EOF,
-        # New LÖVE2D Game Project
+        # New LÖVE2D Project
         EOF
         "LICENSE" => <<~EOF,
         Enter the project's licensing policy here
