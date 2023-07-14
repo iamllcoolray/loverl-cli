@@ -22,13 +22,13 @@ foreach my $changes_arr (@changes_arr) {
     }
 }
 
+close(FH);
+
 is( $Loverl::VERSION, $latest_version,
     'checking if $Grizzly::VERSION is equal to $newest_version' );
 is( $config_version, $latest_version,
     'checking if $config_version equal is to $newest_version' );
 is( $changes_version, $latest_version,
     'checking if $changes_version equal is to $newset_versionc' );
-
-close(FH);
 
 done_testing();
