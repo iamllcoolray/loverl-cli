@@ -6,6 +6,10 @@ use Loverl -command;
 use Loverl::Create::Directory;
 use v5.36;
 
+use constant {true => 1, false => 0};
+
+my $isVerbose = false;
+
 my $project_dir = Loverl::Create::Directory->new();
 
 sub command_names { qw(new --new -n) }
@@ -27,9 +31,10 @@ sub validate_args ( $self, $opt, $args ) {
 
 sub execute ( $self, $opt, $args ) {
     $project_dir->dir_name(@$args);
-    $project_dir->create_dir() unless $self->app->global_options->{verbose};
+    $isVerbose = true if $self->app->global_options->{verbose};
+    $project_dir->create_dir($isVerbose);
     print("test git\n")     if $opt->{git};
-    $project_dir->create_dir_verbose() if $self->app->global_options->{verbose};
+    
 }
 
 1;

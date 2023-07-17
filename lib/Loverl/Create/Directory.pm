@@ -7,6 +7,8 @@ use Moose;
 
 use Loverl::Create::File_Content;
 
+use constant {true => 1, false => 0};
+
 has "dir_name" => (is => "rw", isa => "Str", default => "new-project");
 
 my %file_content = Loverl::Create::File_Content::file_content();
@@ -34,7 +36,7 @@ sub create_file($self){
     }
 }
 
-sub create_dir_verbose ($self) {
+sub create_dir ($self, $isVerbose) {
     if(-e $self->dir_name){
         print($dir . "/" . $self->dir_name . "/" . " already exists as a file.\n");
     }else{
@@ -42,32 +44,21 @@ sub create_dir_verbose ($self) {
             print($dir . "/" . $self->dir_name . "/" . " already exists.\n");
         }else{
             mkdir(project_dir($self)) or die("Can't create directory. " . $!);
-            print("+ " . $dir . "/" . $self->dir_name . "/" . "\n");
             mkdir(project_subdir($self, "assets")) or die("Can't create directory. " . $!);
-            print("+ " . $dir . "/" . $self->dir_name . "/assets/" . "\n");
             mkdir(project_subdir($self, "libraries")) or die("Can't create directory. " . $!);
-            print("+ " . $dir . "/" . $self->dir_name . "/libraries/" . "\n");
             create_file($self);
-            foreach my $key (keys %file_content){
-                print("+ " . $dir . "/" . $self->dir_name . "/$key" . "\n");
-            }
+            print("+ " . $dir . "/" . $self->dir_name . "/" . "\n") if $isVerbose eq false;
+            verbose_logging($self) if $isVerbose eq true;
         }
     }
 }
 
-sub create_dir ($self) {
-    if(-e $self->dir_name){
-        print($dir . "/" . $self->dir_name . "/" . " already exists as a file.\n");
-    }else{
-        if(-d $self->dir_name){
-            print($dir . "/" . $self->dir_name . "/" . " already exists.\n");
-        }else{
-            mkdir(project_dir($self)) or die("Can't create directory. " . $!);
-            mkdir(project_subdir($self, "assets")) or die("Can't create directory. " . $!);
-            mkdir(project_subdir($self, "libraries")) or die("Can't create directory. " . $!);
-            create_file($self);
-            print("+ " . $dir . "/" . $self->dir_name . "/" . "\n");
-        }
+sub verbose_logging($self){
+    print("+ " . $dir . "/" . $self->dir_name . "/" . "\n");
+    print("+ " . $dir . "/" . $self->dir_name . "/assets/" . "\n");
+    print("+ " . $dir . "/" . $self->dir_name . "/libraries/" . "\n");
+    foreach my $key (keys %file_content){
+        print("+ " . $dir . "/" . $self->dir_name . "/$key" . "\n");
     }
 }
 
