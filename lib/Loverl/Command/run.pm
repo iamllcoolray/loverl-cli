@@ -22,14 +22,15 @@ sub validate_args ( $self, $opt, $args ) {
 }
 
 sub execute ( $self, $opt, $args ) {
-    system('"C:\Program Files\LOVE\love.exe"') if $os_name eq "MSWin32" and -e 'C:\Program Files\LOVE\love.exe';;
-    croak("Download love at love2d.org\n") if $os_name eq "MSWin32" and !-e 'C:\Program Files\LOVE\love.exe';
-
-    system('"/Applications/love.app/Contents/MacOS/love"') if $os_name eq "darwin" and -e '/Applications/love.app/Contents/MacOS/love';
-    croak("Download love at love2d.org\n") if $os_name eq "darwin" and !-e '/Applications/love.app/Contents/MacOS/love';
-
-    system($ENV{LINUX_LOVE_PATH}) if $os_name eq "linux" and $ENV{LINUX_LOVE_PATH} ne undef;
-    croak("Download love at love2d.org\n") if $os_name eq "linux" and $ENV{LINUX_LOVE_PATH} eq undef;
+    if ($os_name eq "MSWin32" and -e 'C:\Program Files\LOVE\love.exe'){
+        system('"C:\Program Files\LOVE\love.exe"');
+    }elsif ($os_name eq "darwin" and -e '/Applications/love.app/Contents/MacOS/love'){
+        system('"/Applications/love.app/Contents/MacOS/love"');
+    }elsif ($os_name eq "linux" and $ENV{LINUX_LOVE_PATH} ne undef){
+        system($ENV{LINUX_LOVE_PATH}) 
+    }else{
+        croak("Download love at love2d.org\n")
+    }
 }
 
 1;
