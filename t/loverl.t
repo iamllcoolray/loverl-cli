@@ -3,6 +3,7 @@ use App::Cmd::Tester;
 
 use v5.36;
 use Cwd;
+use Git::Repository;
 use Loverl;
 
 my $dir = getcwd();
@@ -10,6 +11,8 @@ my $dir_name = 'testing-dir';
 
 my @dir_names = qw(assets libraries);
 my @file_names = qw(main.lua conf.lua README.md LICENSE .gitignore);
+
+# Testing new command
 
 my $new_result = test_app(Loverl => [ qw(new testing-dir) ]);
 
@@ -30,6 +33,8 @@ if(-d $dir_name){
         }
     }
 
+    # Testing build command
+
     chdir($testing_dir);
 
     my $build_result = test_app(Loverl => [ qw(build) ]);
@@ -37,13 +42,9 @@ if(-d $dir_name){
     if(-e 'LÖVE2DGame.love'){
         is($build_result->output, '', 'checks for LÖVE2DGame.love');
     }
-
-    system("rm -rf $testing_dir");
 }
 
-if(!-d $dir_name){
-    print("SAFELY REMOVED: $testing_dir\n");
-}
+# Testing run command
 
 my $os_name = $^O;
 #my $run_result = test_app(Loverl => [ qw(run) ]);
@@ -76,6 +77,20 @@ if($os_name eq "linux"){
     }else{
         warn("Download love at love2d.org\n");
     }
+}
+
+unless ( Git::Repository->version_gt('1.6.5') ) {
+    warn("Install the latest verison of git");
+}else{
+    isnt(Git::Repository->version_gt('1.6.5'), Git::Repository->version, 'checking for git')
+}
+
+if(-d $testing_dir){
+    system("rm -rf $testing_dir");
+}
+
+if(!-d $testing_dir){
+    print("SAFELY REMOVED: $testing_dir\n");
 }
 
 done_testing();
