@@ -4,6 +4,10 @@ package Loverl::Command::build;
 
 use Loverl -command;
 use v5.36;
+use Carp;
+use Archive::Zip;
+
+my $zip = Archive::Zip->new();
 
 sub command_names { qw(build --build -b) }
 
@@ -19,6 +23,16 @@ sub validate_args ( $self, $opt, $args ) {
 }
 
 sub execute ( $self, $opt, $args ) {
+    if(-e "main.lua"){
+        if(-e "conf.lua"){
+            $zip->addTree( '.', 'LÖVE2DGame' );
+            $zip->writeToFileNamed('LÖVE2DGame.love');
+        }else{
+            croak("you are missing a conf.lua file");
+        }
+    }else{
+        croak("you are missing a main.lua file");
+    }
     print("test verbose") if $self->app->global_options->{verbose};
 }
 
