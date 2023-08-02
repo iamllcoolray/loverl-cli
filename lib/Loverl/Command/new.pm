@@ -23,10 +23,12 @@ sub opt_spec {
 }
 
 sub validate_args ( $self, $opt, $args ) {
+=begin
     $self->usage_error(
         "Requires a project name\n
         run \"loverl new [New Project Name]\""
     ) unless @$args;
+=cut
 }
 
 sub execute ( $self, $opt, $args ) {
