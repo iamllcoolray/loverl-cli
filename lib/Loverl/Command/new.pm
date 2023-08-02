@@ -6,6 +6,8 @@ use Loverl -command;
 use Loverl::Create::Directory;
 use v5.36;
 
+use Git::Repository;
+
 use constant {true => 1, false => 0};
 
 my $isVerbose = false;
@@ -31,7 +33,8 @@ sub execute ( $self, $opt, $args ) {
     $project_dir->dir_name(@$args);
     $isVerbose = true if $self->app->global_options->{verbose};
     $project_dir->create_dir($isVerbose);
-    
+    Git::Repository->run( init => $project_dir->project_dir() );
+    my $repo = Git::Repository->new( work_tree => $project_dir->project_dir() );
 }
 
 1;
