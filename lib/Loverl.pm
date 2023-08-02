@@ -23,7 +23,7 @@ sub global_opt_spec {
 
     loverl [options]
         Options:
-            new [New Prject Name]
+            new [New Project Name]
             build
             help
             version
