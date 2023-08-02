@@ -14,7 +14,7 @@ sub file_content(){
         end
 
         function love.draw()
-            
+            love.graphics.print("Hello World", 400, 300)
         end
         EOF
         "conf.lua" => <<~EOF,
