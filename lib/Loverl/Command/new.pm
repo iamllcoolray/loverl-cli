@@ -18,10 +18,6 @@ sub abstract { "initializes a new LÖVE2D project" }
 
 sub description { "Initializes a new LÖVE2D project directory." }
 
-sub opt_spec {
-    return ( [ "git|g", "initializes git into the project" ], );
-}
-
 sub validate_args ( $self, $opt, $args ) {
 =begin
     $self->usage_error(
@@ -35,7 +31,6 @@ sub execute ( $self, $opt, $args ) {
     $project_dir->dir_name(@$args);
     $isVerbose = true if $self->app->global_options->{verbose};
     $project_dir->create_dir($isVerbose);
-    print("test git\n")     if $opt->{git};
     
 }
 
@@ -54,5 +49,3 @@ Loverl's new command will initialize the LÖVE2D project directory.
     or
 
     loverl new [New Project Name]
-
-        --git (or -g) initializes git

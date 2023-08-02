@@ -31,6 +31,54 @@ sub file_content(){
         "LICENSE" => <<~EOF,
         Enter the project's licensing policy here
         EOF
+        ".gitignore" => <<~EOF,
+        # Compiled Lua sources
+        luac.out
+
+        # luarocks build files
+        *.src.rock
+        *.zip
+        *.tar.gz
+
+        # LÖVE2D build files
+        *.love
+
+        # Object files
+        *.o
+        *.os
+        *.ko
+        *.obj
+        *.elf
+
+        # Precompiled Headers
+        *.gch
+        *.pch
+
+        # Libraries
+        *.lib
+        *.a
+        *.la
+        *.lo
+        *.def
+        *.exp
+
+        # Shared objects (inc. Windows DLLs)
+        *.dll
+        *.so
+        *.so.*
+        *.dylib
+
+        # Executables
+        *.exe
+        *.out
+        *.app
+        *.i*86
+        *.x86_64
+        *.hex
+
+        .vscode
+        .DS_Store
+        EOF
     );
 
     return %file_content;
@@ -47,5 +95,3 @@ Loverl's new command will initialize the LÖVE2D project directory.
 =head1 SYNOPSIS
 
     loverl new [New Project Name]
-
-        --git (or -g) initializes git

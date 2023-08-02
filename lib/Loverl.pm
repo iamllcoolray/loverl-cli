@@ -30,8 +30,6 @@ sub global_opt_spec {
 
 =head2 Options
 new - Initializes a new LÖVE2D project directory.
-    
-    --git (or -g)  Initializes git into the project.
 
 Run - Runs the LÖVE2D project through the Love application.
 

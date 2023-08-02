@@ -73,5 +73,3 @@ Loverl's new command will initialize the LÖVE2D project directory.
 =head1 SYNOPSIS
 
     loverl new [New Project Name]
-
-        --git (or -g) initializes git
