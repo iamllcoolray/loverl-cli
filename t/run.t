@@ -7,8 +7,6 @@ use Loverl;
 my $os_name = $^O;
 my $run_result = test_app(Loverl => [ qw(run) ]);
 
-kill('/Applications/love.app/Contents/MacOS/love');
-
 if($os_name eq "MSWin32"){
     if (-e 'C:\Program Files\LOVE\love.exe'){
         is($run_result->output, '', 'checks to see if love is installed on Windows');
