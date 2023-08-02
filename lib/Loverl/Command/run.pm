@@ -22,14 +22,22 @@ sub validate_args ( $self, $opt, $args ) {
 }
 
 sub execute ( $self, $opt, $args ) {
-    if ($os_name eq "MSWin32" and -e 'C:\Program Files\LOVE\love.exe'){
-        system('"C:\Program Files\LOVE\love.exe"');
-    }elsif ($os_name eq "darwin" and -e '/Applications/love.app/Contents/MacOS/love'){
-        system('"/Applications/love.app/Contents/MacOS/love"');
-    }elsif ($os_name eq "linux" and $ENV{LINUX_LOVE_PATH} ne undef){
-        system($ENV{LINUX_LOVE_PATH}) 
+    if(-e "main.lua"){
+        if(-e "conf.lua"){
+            if ($os_name eq "MSWin32" and -e 'C:\Program Files\LOVE\love.exe'){
+                system('"C:\Program Files\LOVE\love.exe"');
+            }elsif ($os_name eq "darwin" and -e '/Applications/love.app/Contents/MacOS/love'){
+                system('"/Applications/love.app/Contents/MacOS/love"');
+            }elsif ($os_name eq "linux" and $ENV{LINUX_LOVE_PATH} ne undef){
+                system($ENV{LINUX_LOVE_PATH}) 
+            }else{
+                croak("Download love at love2d.org\n")
+            }
+        }else{
+            croak("you are missing a conf.lua file");
+        }
     }else{
-        croak("Download love at love2d.org\n")
+        croak("you are missing a main.lua file");
     }
 }
 
