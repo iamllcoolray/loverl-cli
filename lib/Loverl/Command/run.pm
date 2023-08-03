@@ -54,7 +54,7 @@ Loverl's run command will run the LÖVE2D project through the Love application.
 
 =head1 SYNOPSIS
 
-    cd path/to/love2d/game/project/dir
+    cd path/to/love2d/game/project/folder
 
     loverl run
 

@@ -55,7 +55,7 @@ Loverl's build command will build the LÖVE2D project into a build directory.
 
 =head1 SYNOPSIS
 
-    cd path/to/love2d/game/project/dir
+    cd path/to/love2d/game/project/folder
 
     loverl build
 
