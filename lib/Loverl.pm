@@ -59,3 +59,11 @@ Loverl uses Perl version 5.36 or later.
     perl Makefile.PL
     make
     make install
+
+=head2 Git
+
+    You should have L<Git|https://git-scm.com/> installed.
+
+=head2 LÖVE2D
+
+    You will need to have L<LÖVE2D|https://love2d.org/> installed.

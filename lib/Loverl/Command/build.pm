@@ -25,9 +25,11 @@ sub validate_args ( $self, $opt, $args ) {
 sub execute ( $self, $opt, $args ) {
     if(-e "main.lua"){
         if(-e "conf.lua"){
-            if(!-e "LÖVE2DGame.love"){
-                $zip->addTree( '.', '/' );
-                $zip->writeToFileNamed('LÖVE2DGame.love');
+            if(-e "LÖVE2DGame.love"){
+                system("rm -rf LÖVE2DGame.love");
+                makeLoveFile();
+            }else{
+                makeLoveFile();
             }
         }else{
             croak("you are missing a conf.lua file");
@@ -36,6 +38,11 @@ sub execute ( $self, $opt, $args ) {
         croak("you are missing a main.lua file");
     }
     print("test verbose") if $self->app->global_options->{verbose};
+}
+
+sub makeLoveFile(){
+    $zip->addTree( '.', '/' );
+    $zip->writeToFileNamed('LÖVE2DGame.love');
 }
 
 1;
@@ -48,4 +55,10 @@ Loverl's build command will build the LÖVE2D project into a build directory.
 
 =head1 SYNOPSIS
 
+    cd path/to/love2d/game/project/dir
+
     loverl build
+
+=head2 Requirements
+
+    Need main.lua and conf.lua to exist in order to use the command.
