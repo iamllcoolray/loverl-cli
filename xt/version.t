@@ -5,7 +5,7 @@ use Config::INI::Reader;
 
 use Loverl;
 
-my $latest_version = '0.003';
+my $latest_version = '0.004';
 
 my $config_hash     = Config::INI::Reader->read_file('dist.ini');
 my $config_version  = $config_hash->{_}->{version};
