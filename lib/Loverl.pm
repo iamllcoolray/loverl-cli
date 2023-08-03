@@ -29,9 +29,10 @@ sub global_opt_spec {
             version
 
 =head2 Options
+
 new - Initializes a new LÖVE2D project directory.
 
-Run - Runs the LÖVE2D project through the Love application.
+run - Runs the LÖVE2D project through the Love application.
 
 build - Builds the LÖVE2D project into a build directory
 
