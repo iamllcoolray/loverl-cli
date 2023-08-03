@@ -62,8 +62,12 @@ Loverl uses Perl version 5.36 or later.
 
 =head2 Git
 
-    You should have L<Git|https://git-scm.com/> installed.
+    L<Git|https://git-scm.com/> should already be installed.
 
 =head2 LÖVE2D
 
-    You will need to have L<LÖVE2D|https://love2d.org/> installed.
+    L<LÖVE2D|https://love2d.org/> should already be installed.
+
+=head3 love PATH on Linux
+
+    The LINUX_LOVE_PATH environment variable should be set inorder to use the run command.
