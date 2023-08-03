@@ -1,6 +1,6 @@
 package Loverl;
 
-# ABSTRACT: Lover - A LÖVE2D game development command-line interface.
+# ABSTRACT: A LÖVE2D game development command-line interface.
 
 our $VERSION = '0.001';
 
