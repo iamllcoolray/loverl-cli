@@ -21,7 +21,7 @@ sub abstract { "initializes a new LÖVE2D project" }
 sub description { "Initializes a new LÖVE2D project directory." }
 
 sub validate_args ( $self, $opt, $args ) {
-=begin
+=pod
     $self->usage_error(
         "Requires a project name\n
         run \"loverl new [New Project Name]\""
