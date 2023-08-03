@@ -3,3 +3,6 @@ Revision history for {{$dist->name}}
 {{$NEXT}}
 
     - Initialized Loverl command-line interface
+    - Users can create a new LOVE2D project
+    - Users can run the love application to play their game
+    - Users can build a *.love file to prepare for platform releases
