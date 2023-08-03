@@ -3,6 +3,7 @@ Revision history for {{$dist->name}}
 {{$NEXT}}
 
     - Simplified build logic
+    - Fixed build bug
 
 0.003     2023-08-03 00:56:38-04:00 America/New_York
 
