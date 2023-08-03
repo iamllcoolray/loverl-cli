@@ -2,7 +2,10 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.002     2023-08-02 22:57:33-04:00 America/New_York
+
     - Check to see if LÖVE2DGame.love exists, removes file to create a new one
+    - Updated documentation
 
 0.001     2023-08-02 21:31:18-04:00 America/New_York
 
