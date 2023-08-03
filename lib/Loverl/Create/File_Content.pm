@@ -92,4 +92,4 @@ sub file_content(){
 
 =head1 DESCRIPTION
 
-THe File Content Module is called by the Directory module write to to the proper files.
+The File Content Module is called by the Directory module write to to the proper files.
