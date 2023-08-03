@@ -60,4 +60,4 @@ Loverl's run command will run the LÖVE2D project through the Love application.
 
 =head2 Requirements
 
-    Need main.lua and conf.lua to exist in order to use the command.
+Need main.lua and conf.lua to exist in order to use the command.
