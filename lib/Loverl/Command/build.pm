@@ -25,8 +25,10 @@ sub validate_args ( $self, $opt, $args ) {
 sub execute ( $self, $opt, $args ) {
     if(-e "main.lua"){
         if(-e "conf.lua"){
-            $zip->addTree( '.', '/' );
-            $zip->writeToFileNamed('LÖVE2DGame.love');
+            if(!-e "LÖVE2DGame.love"){
+                $zip->addTree( '.', '/' );
+                $zip->writeToFileNamed('LÖVE2DGame.love');
+            }
         }else{
             croak("you are missing a conf.lua file");
         }
