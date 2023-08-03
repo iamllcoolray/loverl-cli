@@ -70,8 +70,4 @@ sub verbose_logging($self){
 
 =head1 DESCRIPTION
 
-Loverl's new command will initialize the LÖVE2D project directory.
-
-=head1 SYNOPSIS
-
-    loverl new [New Project Name]
+The Directory module creates the project folder.

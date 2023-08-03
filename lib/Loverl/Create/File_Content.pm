@@ -92,8 +92,4 @@ sub file_content(){
 
 =head1 DESCRIPTION
 
-Loverl's new command will initialize the LÖVE2D project directory.
-
-=head1 SYNOPSIS
-
-    loverl new [New Project Name]
+THe File Content Module is called by the Directory module write to to the proper files.
