@@ -1,5 +1,7 @@
 package Loverl::Create::Directory;
 
+# ABSTRACT: Creates the project directory
+
 use v5.36;
 
 use Cwd;

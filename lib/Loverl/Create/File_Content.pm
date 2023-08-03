@@ -1,5 +1,7 @@
 package Loverl::Create::File_Content;
 
+# ABSTRACT: Will be used when preocessing file content
+
 use v5.36;
 
 sub file_content(){
