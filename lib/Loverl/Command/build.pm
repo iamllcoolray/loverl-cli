@@ -27,10 +27,8 @@ sub execute ( $self, $opt, $args ) {
         if(-e "conf.lua"){
             if(-e "LÖVE2DGame.love"){
                 system("rm -rf LÖVE2DGame.love");
-                makeLoveFile();
-            }else{
-                makeLoveFile();
             }
+            makeLoveFile();
         }else{
             croak("you are missing a conf.lua file");
         }
