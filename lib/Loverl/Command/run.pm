@@ -3,10 +3,13 @@ package Loverl::Command::run;
 # ABSTRACT: Runs the LÖVE2D project through the Love application
 
 use Loverl -command;
+use Cwd;
 use v5.36;
 use Carp;
 
 my $os_name = $^O;
+
+my $project_dir = getcwd();
 
 sub command_names { qw(run --run -r) }
 
@@ -25,11 +28,11 @@ sub execute ( $self, $opt, $args ) {
     if(-e "main.lua"){
         if(-e "conf.lua"){
             if ($os_name eq "MSWin32" and -e 'C:\Program Files\LOVE\love.exe'){
-                system('"C:\Program Files\LOVE\love.exe"');
+                system("\"C:\\Program Files\\LOVE\\love.exe\" " . $project_dir);
             }elsif ($os_name eq "darwin" and -e '/Applications/love.app/Contents/MacOS/love'){
-                system('"/Applications/love.app/Contents/MacOS/love"');
+                system("\"/Applications/love.app/Contents/MacOS/love\" " . $project_dir);
             }elsif ($os_name eq "linux" and $ENV{LINUX_LOVE_PATH} ne undef){
-                system($ENV{LINUX_LOVE_PATH}) 
+                system($ENV{LINUX_LOVE_PATH} . ' ' . $project_dir) 
             }else{
                 croak("Download love at love2d.org\n")
             }
