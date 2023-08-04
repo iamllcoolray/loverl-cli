@@ -2,6 +2,10 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+    - Minor documentation changes
+    - Rename LOVE2DGame.love => Game.love
+    - Force user permission when re-running build command
+
 0.004     2023-08-03 12:19:54-04:00 America/New_York
 
     - Simplified build logic
