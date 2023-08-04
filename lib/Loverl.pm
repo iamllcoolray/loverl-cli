@@ -2,7 +2,7 @@ package Loverl;
 
 # ABSTRACT: A LÖVE2D game development command-line interface.
 
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 use v5.36;
 
