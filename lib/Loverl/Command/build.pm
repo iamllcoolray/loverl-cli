@@ -6,11 +6,12 @@ use Loverl -command;
 use v5.36;
 use Carp;
 use Archive::Zip;
-use Loverl::Create::Directory;
+use Cwd;
 
 my $zip = Archive::Zip->new();
 
 my $game_file = 'Game.love';
+my $dir = getcwd();
 
 sub command_names { qw(build --build -b) }
 
@@ -31,7 +32,7 @@ sub execute ( $self, $opt, $args ) {
             system("sudo rm -rf $game_file") if -e "$game_file";
             $zip->addTree( '.', '/' );
             $zip->writeToFileNamed($game_file);
-            print("+ " . Loverl::Create::Directory->dir() . "/$game_file\n");
+            print("+ " . $dir . "/$game_file\n");
         }else{
             croak("you are missing a conf.lua file");
         }

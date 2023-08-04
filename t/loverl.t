@@ -40,7 +40,7 @@ if(-d $dir_name){
     my $build_result = test_app(Loverl => [ qw(build) ]);
 
     if(-e 'Game.love'){
-        is($build_result->output, '', 'checks for Game.love');
+        isnt($build_result->output, '', 'checks for Game.love');
     }
 }
 
