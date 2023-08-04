@@ -15,10 +15,13 @@ has "dir_name" => (is => "rw", isa => "Str", default => "new-project");
 
 my %file_content = Loverl::Create::File_Content::file_content();
 
-my $dir = getcwd();
+sub dir(){
+    my $dir = getcwd();
+    return $dir;
+}
 
 sub project_dir($self){
-    my $project_dir = $dir . "/" . $self->dir_name;
+    my $project_dir = dir() . "/" . $self->dir_name;
     return $project_dir;
 }
 
@@ -40,27 +43,27 @@ sub create_file($self){
 
 sub create_dir ($self, $isVerbose) {
     if(-e $self->dir_name){
-        print($dir . "/" . $self->dir_name . "/" . " already exists as a file.\n");
+        print(project_dir($self) . "/" . " already exists as a file.\n");
     }else{
         if(-d $self->dir_name){
-            print($dir . "/" . $self->dir_name . "/" . " already exists.\n");
+            print(project_dir($self) . "/" . " already exists.\n");
         }else{
             mkdir(project_dir($self)) or die("Can't create directory. " . $!);
             mkdir(project_subdir($self, "assets")) or die("Can't create directory. " . $!);
             mkdir(project_subdir($self, "libraries")) or die("Can't create directory. " . $!);
             create_file($self);
-            print("+ " . $dir . "/" . $self->dir_name . "/" . "\n") if $isVerbose eq false;
+            print("+ " . project_dir($self) . "/" . "\n") if $isVerbose eq false;
             verbose_logging($self) if $isVerbose eq true;
         }
     }
 }
 
 sub verbose_logging($self){
-    print("+ " . $dir . "/" . $self->dir_name . "/" . "\n");
-    print("+ " . $dir . "/" . $self->dir_name . "/assets/" . "\n");
-    print("+ " . $dir . "/" . $self->dir_name . "/libraries/" . "\n");
+    print("+ " . project_dir($self) . "/" . "\n");
+    print("+ " . project_dir($self) . "/assets/" . "\n");
+    print("+ " . project_dir($self) . "/libraries/" . "\n");
     foreach my $key (keys %file_content){
-        print("+ " . $dir . "/" . $self->dir_name . "/$key" . "\n");
+        print("+ " . project_dir($self) . "/$key" . "\n");
     }
 }
 
